@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Serciços • FORGEN</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Gestão de Serviços</h1>
+        </header>
+
+        <main>
+
+            <section aria-labelledby="new-title">
+                <h2 id="new-title">Cadastrar Serviço</h2>
+
+                <form id="service-form">
+                    <label for="client">Cliente</label>
+                    <input id="client" required>
+
+                    <label for="description">Serviço</label>
+                    <input id="description" required>
+
+                    <button type="submit">Adicionar</button>
+                </form>
+            </section>
+
+            <section  aria-labelledby="list-title"> 
+                <h2 id="list-title">Acompanhamento</h2>
+                <p id="empty-state">Ainda não há serviços cadastrados</p>
+                <ul id="service-list" aria-live="polite"></ul>
+            </section>
+
+
+
+        </main>
+
+
+
+    </body>
+</html>
