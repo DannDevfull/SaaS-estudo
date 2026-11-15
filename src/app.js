@@ -44,9 +44,53 @@ function renderServices(){
         // Usando um ternário (Estrutura condicional mais simplificada)
         // Ela retornará "Em andamento", pois é falsa, como foi colocado acima
 
-        
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = service.completed
+         ? "Reabrir"
+         : "Concluir"; 
 
+        button.addEventListener("click", () => {
+            service.completed = !service.completed;
+            renderServices();    
+        });
 
+        card.append(title, client, status, button);
+        list.append(card);
     }
-
 }
+
+form.addEventListener ("submit", (event) =>{
+    event.preventDefault();
+    // Estou impedindo certas ações do navegador, que é: Ao submeter um formulário, carregar a página.
+
+    const client = ClientInput.value.trim();
+    // Estamos pegando o valor digitado no input.
+    // O trim() remove espaços no começo e no fim do texto
+    const description = descriptionInput.value.trim();
+
+    if (!client || !description){
+        return
+        //Basicamente, estamos verificando se os valores dos Input estão vazios ou não. Se estiverem vazios, ele encerra a função -- Lembre que o return também, ao ser executado, encerra a função chamada. 
+
+        alert("Não existe nada digitado!");
+    };
+
+
+    // Acrescentando um novo item dentro do Array.
+    services.unshift({
+        client,
+        description,
+        completed: false,
+    });
+
+
+
+    form.reset();
+    // Limpa os campos do Formulário
+
+    renderServices();
+    // redesenha a lista com um novo item
+});
+
+renderServices();
